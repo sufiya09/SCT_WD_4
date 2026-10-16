@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TaskFlow</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand">TaskFlow</div>
+    <div class="side-label">Lists</div>
+    <ul class="lists" id="lists"></ul>
+    <form class="newlist" id="listForm">
+      <input type="text" id="newList" placeholder="New list" aria-label="New list name">
+      <button class="btn sm" type="submit">Add</button>
+    </form>
+    <div class="side-foot"><button class="btn ghost" id="clearDone" type="button">Clear completed</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div>
+        <h2 id="listTitle"></h2>
+        <p class="sub" id="listSub"></p>
+      </div>
+      <div class="top-actions">
+        <button class="btn ghost" id="themeBtn" type="button"></button>
+        <button class="btn" id="newTask" type="button">+ New task</button>
+      </div>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Search tasks" aria-label="Search tasks">
+      <select id="sort" aria-label="Sort tasks">
+        <option value="due">Sort: Due date</option>
+        <option value="priority">Sort: Priority</option>
+        <option value="newest">Sort: Newest</option>
+      </select>
+      <div class="tabs" id="tabs"></div>
+    </div>
+
+    <div class="scroll" id="tasks"></div>
+  </main>
+</div>
+
+<dialog id="dlg">
+  <form id="taskForm" class="dform">
+    <h3 id="dlgTitle">New task</h3>
+    <label>Title<input type="text" id="tTitle" required placeholder="What needs doing?"></label>
+    <label>Description<textarea id="tDesc" rows="4" placeholder="Add details, notes or steps"></textarea></label>
+    <fieldset>
+      <legend>Priority</legend>
+      <div class="seg">
+        <label class="p-low"><input type="radio" name="pri" value="low"><span>Low</span></label>
+        <label class="p-medium"><input type="radio" name="pri" value="medium" checked><span>Medium</span></label>
+        <label class="p-high"><input type="radio" name="pri" value="high"><span>High</span></label>
+      </div>
+    </fieldset>
+    <div class="grid3">
+      <label>Due date<input type="date" id="tDate"></label>
+      <label>Due time<input type="time" id="tTime"></label>
+      <label>List<select id="tList"></select></label>
+    </div>
+    <div class="dactions">
+      <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
+      <button class="btn" type="submit">Save task</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
